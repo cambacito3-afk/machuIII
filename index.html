@@ -288,27 +288,45 @@
 
     <main>
         <section class="hero mural">
-
-            <!-- VÍDEO DE FONDO -->
-            <video autoplay muted playsinline loop  preload="auto">
-                <source src="istockphoto-2167293862-640_adpp_is.mp4" type="video/mp4">
+           <video id="miVideo" autoplay muted playsinline loop  preload="auto">
+               <source src="istockphoto-2167293862-640_adpp_is.mp4" type="video/mp4">
             </video>
             <script>
-             document.addEventListener("DOMContentLoaded", function() {
-                const video = document.querySelector("video");
+                document.addEventListener("DOMContentLoaded", function() {
+  const video = document.getElementById("miVideo");
 
-                if (video) {
-                  video.muted = true;
-                  video.play().catch(error => {
-                    console.log("Autoplay bloqueado:", error);
-                   });
-                 }
-              });
-              </script>
+  if (video) {
+    video.muted = true;
+
+    // Intenta reproducir varias veces
+    const playVideo = () => {
+      video.play().catch(() => {});
+    };
+
+    playVideo();
+
+    // Reintenta cuando el video esté listo
+    video.addEventListener("canplay", playVideo);
+
+    // Reintenta cuando la página esté visible
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) playVideo();
+    });
+  }
+});
+</script>
+            <script>
+document.addEventListener("touchstart", function() {
+  const video = document.getElementById("miVideo");
+  if (video) video.play();
+}, { once: true });
+</script>
+
+
+
             
 
-            <!-- CONTENIDO ENCIMA -->
-            <div>
+              <div>
                 <h1>Travelling near the sky</h1>
                 <p>Curated ideas for experiencing Peru with only a backpack. Walk through
                     Inca stones at dawn, chase salt-lake sunsets, and sleep under the
