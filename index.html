@@ -433,6 +433,29 @@
             </div>
         </section>
     </main>
+  <script>
+  const video = document.querySelector('.bg-video');
+  
+  // Forzar play al cargar
+  document.addEventListener('DOMContentLoaded', () => {
+    video.play().catch(() => {});
+  });
+
+  // Reiniciar si se pausa solo
+  video.addEventListener('pause', () => {
+    video.play().catch(() => {});
+  });
+
+  // Reiniciar cuando la página vuelve a estar visible
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      video.play().catch(() => {});
+    }
+  });
+</script>
+ 
+
+    
 
     <footer>
         Ready to go lighter? Save the map offline, carry layers, and keep sunrise slots for the magic hours.
