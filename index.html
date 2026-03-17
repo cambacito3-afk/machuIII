@@ -253,16 +253,21 @@
             font-size: 0.9rem;
         }
 @media (max-width: 768px) {
+  .hero.mural {
+    min-height: auto;   /* quita el alto mínimo */
+    height: auto;
+  }
+
   .bg-video {
-    position:relative;
-    width: 100px%;
+    position: relative;
+    width: 180px;       /* cambia este número */
     height: auto;
     top: auto;
     left: auto;
+    transform: none;
     display: block;
     margin: 0 auto;
-    transform: none;
-    object-fit:contain;
+    object-fit: contain;
   }
 }
 
