@@ -86,9 +86,10 @@
   padding: 0 16px;
   height: 32px;  /* antes 40px */
   background: #FFFFFF;
-  overflow-x: auto;  /* permite deslizar */
+  overflow-x: scroll;  /* permite deslizar */
   -webkit-overflow-scrolling: touch;  /* desliz suave en iPhone */
   scrollbar-width: none;  /* oculta scrollbar */
+  touch -action: pan;
 }
 
 .section-nav::-webkit-scrollbar {
